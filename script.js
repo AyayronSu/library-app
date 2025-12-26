@@ -1,5 +1,6 @@
 const myLibrary = [];
 const newBookBtn = document.getElementById('new-book');
+const newBookForm = document.querySelector('.form');
 const displayContainer = document.querySelector('.booksContainer');
 
 function Book(title, author, pages, read) {
@@ -41,7 +42,7 @@ function displayBooks() {
 }
 
 newBookBtn.addEventListener('click', function() {
-    
+    newBookForm.removeAttribute('hidden');
 })
 
 
