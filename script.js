@@ -3,6 +3,10 @@ const newBookBtn = document.getElementById('new-book');
 const newBookForm = document.querySelector('.form');
 const submitBtn = document.getElementById('submit-btn');
 const displayContainer = document.querySelector('.booksContainer');
+const inputTitleElement = document.getElementById('title');
+const inputAuthorElement = document.getElementById('author');
+const inputPagesElement = document.getElementById('pages');
+const inputReadElement = document.querySelector('input[name="choice"]:checked')
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -58,15 +62,15 @@ function displayBooks() {
         })  
 
         const toggleReadBtn = document.createElement('button');
-        removeBtn.textContent = "Change Read Status";
+        toggleReadBtn.textContent = "Change Read Status";
         card.appendChild(toggleReadBtn);
 
         toggleReadBtn.addEventListener('click', function() {
-            if (bookRead.textContent = "read") {
-                bookRead.textContent = "Not read";
+            if (inputReadElement.value == "not-read") {
+                bookRead.textContent = "read";
             }
-            else {
-                bookRead.textContent = "read"
+            if (inputReadElement.value == "read") {
+                bookRead.textContent = "not-read";
             }
         })
 
@@ -80,11 +84,6 @@ newBookBtn.addEventListener('click', function() {
 
 submitBtn.addEventListener('click', function() {
     displayContainer.innerHTML = '';
-
-    const inputTitleElement = document.getElementById('title');
-    const inputAuthorElement = document.getElementById('author');
-    const inputPagesElement = document.getElementById('pages');
-    const inputReadElement = document.querySelector('input[name="choice"]:checked')
 
     const inputTitleValue = inputTitleElement.value;
     const inputAuthorValue = inputAuthorElement.value;
