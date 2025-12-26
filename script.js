@@ -57,6 +57,19 @@ function displayBooks() {
             console.log(myLibrary);
         })  
 
+        const toggleReadBtn = document.createElement('button');
+        removeBtn.textContent = "Change Read Status";
+        card.appendChild(toggleReadBtn);
+
+        toggleReadBtn.addEventListener('click', function() {
+            if (bookRead.textContent = "read") {
+                bookRead.textContent = "Not read";
+            }
+            else {
+                bookRead.textContent = "read"
+            }
+        })
+
         displayContainer.appendChild(card);
     });
 }
@@ -71,17 +84,12 @@ submitBtn.addEventListener('click', function() {
     const inputTitleElement = document.getElementById('title');
     const inputAuthorElement = document.getElementById('author');
     const inputPagesElement = document.getElementById('pages');
-    const inputReadElement = document.getElementById('read');
+    const inputReadElement = document.querySelector('input[name="choice"]:checked')
 
     const inputTitleValue = inputTitleElement.value;
     const inputAuthorValue = inputAuthorElement.value;
     const inputPagesValue = inputPagesElement.value;
     const inputReadValue = inputReadElement.value;
-
-    console.log(inputTitleValue);
-    console.log(inputAuthorValue);
-    console.log(inputPagesValue);
-    console.log(inputReadValue);
 
     addBookToLibrary(inputTitleValue, inputAuthorValue, inputPagesValue, inputReadValue);
     displayBooks();
