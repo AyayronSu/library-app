@@ -1,6 +1,7 @@
 const myLibrary = [];
 const newBookBtn = document.getElementById('new-book');
 const newBookForm = document.querySelector('.form');
+const submitBtn = document.getElementById('submit-btn');
 const displayContainer = document.querySelector('.booksContainer');
 
 function Book(title, author, pages, read) {
@@ -12,6 +13,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(newTitle, newAuthor, newPages, newRead) {
+
   const newBook = new Book(newTitle, newAuthor, newPages, newRead);
 
   myLibrary.push(newBook);
@@ -45,6 +47,25 @@ newBookBtn.addEventListener('click', function() {
     newBookForm.removeAttribute('hidden');
 })
 
+submitBtn.addEventListener('click', function() {
+    const inputTitleElement = document.getElementById('title');
+    const inputAuthorElement = document.getElementById('author');
+    const inputPagesElement = document.getElementById('pages');
+    const inputReadElement = document.getElementById('read');
 
-addBookToLibrary("title", "author", "pages", "read");
+    const inputTitleValue = inputTitleElement.value;
+    const inputAuthorValue = inputAuthorElement.value;
+    const inputPagesValue = inputPagesElement.value;
+    const inputReadValue = inputReadElement.value;
+
+    console.log(inputTitleValue);
+    console.log(inputAuthorValue);
+    console.log(inputPagesValue);
+    console.log(inputReadValue);
+
+    addBookToLibrary(inputTitleValue, inputAuthorValue, inputPagesValue, inputReadValue);
+    displayBooks();
+})
+
+
 displayBooks();
