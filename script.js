@@ -1,11 +1,5 @@
-const myLibrary = [
-    {
-        title: "test title",
-        author: "test author",
-        pages: "test pages",
-        read: "test read"
-    }
-];
+const myLibrary = [];
+const newBookBtn = document.getElementById('new-book');
 const displayContainer = document.querySelector('.booksContainer');
 
 function Book(title, author, pages, read) {
@@ -13,10 +7,10 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID();
 }
 
 function addBookToLibrary(newTitle, newAuthor, newPages, newRead) {
-  // take params, create a book then store it in the array
   const newBook = new Book(newTitle, newAuthor, newPages, newRead);
 
   myLibrary.push(newBook);
@@ -46,4 +40,10 @@ function displayBooks() {
     });
 }
 
+newBookBtn.addEventListener('click', function() {
+    
+})
+
+
+addBookToLibrary("title", "author", "pages", "read");
 displayBooks();
