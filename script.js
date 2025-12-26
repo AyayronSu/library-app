@@ -17,6 +17,8 @@ function addBookToLibrary(newTitle, newAuthor, newPages, newRead) {
   const newBook = new Book(newTitle, newAuthor, newPages, newRead);
 
   myLibrary.push(newBook);
+
+  console.log(myLibrary);
 }
 
 function displayBooks() {
@@ -39,6 +41,22 @@ function displayBooks() {
         card.appendChild(bookPages);
         card.appendChild(bookRead);
 
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Remove Book";
+        card.appendChild(removeBtn);
+
+        removeBtn.addEventListener('click', function() {
+            displayContainer.removeChild(card)
+
+            for (i = 0; i < myLibrary.length; i++) {
+                if (myLibrary[i].id == book.id) {
+                    myLibrary.splice(i, 1);
+                }
+            }
+
+            console.log(myLibrary);
+        })  
+
         displayContainer.appendChild(card);
     });
 }
@@ -48,6 +66,8 @@ newBookBtn.addEventListener('click', function() {
 })
 
 submitBtn.addEventListener('click', function() {
+    displayContainer.innerHTML = '';
+
     const inputTitleElement = document.getElementById('title');
     const inputAuthorElement = document.getElementById('author');
     const inputPagesElement = document.getElementById('pages');
